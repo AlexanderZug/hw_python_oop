@@ -6,8 +6,11 @@ class InfoMessage(object):
     speed: float
     calories: float
 
-    def __init__(self, training_type: str, duration: float,
-                 distance: float, speed: float, calories: float) -> None:
+    def __init__(self, training_type: str,
+                 duration: float,
+                 distance: float,
+                 speed: float,
+                 calories: float) -> None:
         self.training_type = training_type
         self.duration = duration
         self.distance = distance
@@ -56,8 +59,10 @@ class Training(object):
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        msg = InfoMessage(self.__class__.__name__, self.duration, self.get_distance(),
-                          self.get_mean_speed(), self.get_spent_calories())
+        msg = InfoMessage(self.__class__.__name__, self.duration,
+                          self.get_distance(),
+                          self.get_mean_speed(),
+                          self.get_spent_calories())
         return msg
 
 
@@ -77,8 +82,11 @@ class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     height: float
 
-    def __init__(self, action: int, duration: float,
-                 weight: float, height: float) -> None:
+    def __init__(self,
+                 action: int,
+                 duration: float,
+                 weight: float,
+                 height: float) -> None:
         super().__init__(action, duration, weight)
         self.height = height
 
@@ -99,8 +107,11 @@ class Swimming(Training):
     count_pool: int
     LEN_STEP: float = 1.38
 
-    def __init__(self, action: int, duration: float, weight: float,
-                 length_pool: float, count_pool: int) -> None:
+    def __init__(self, action: int,
+                 duration: float,
+                 weight: float,
+                 length_pool: float,
+                 count_pool: int) -> None:
         super().__init__(action,
                          duration, weight)
         self.length_pool = length_pool
@@ -126,7 +137,9 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    training_type_dict: dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
+    training_type_dict: dict = {'SWM': Swimming,
+                                'RUN': Running,
+                                'WLK': SportsWalking}
     return training_type_dict.get(workout_type)(*data)
 
 
