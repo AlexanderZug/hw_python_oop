@@ -70,10 +70,11 @@ class Running(Training):
 
     def get_spent_calories(self) -> float:
         """Расчет калорий при беге."""
-        return ((self.CALORIES_MEAN_SPEED_MULTIPLIER_FIRST * self.get_mean_speed()
+        return ((self.CALORIES_MEAN_SPEED_MULTIPLIER_FIRST
+                 * self.get_mean_speed()
                  - self.CALORIES_MEAN_SPEED_MULTIPLIER_SECOND)
-                * self.weight / self.M_IN_KM *
-                (self.duration_h * self.MIN_IN_HOUR))
+                * self.weight / self.M_IN_KM
+                * (self.duration_h * self.MIN_IN_HOUR))
 
 
 class SportsWalking(Training):
@@ -122,8 +123,8 @@ class Swimming(Training):
 
     def get_spent_calories(self) -> float:
         """Расчет калорий при плавании."""
-        return ((self.get_mean_speed() +
-                 self.CALORIES_MEAN_SPEED_MULTIPLIER_FIRST)
+        return ((self.get_mean_speed()
+                 + self.CALORIES_MEAN_SPEED_MULTIPLIER_FIRST)
                 * self.CALORIES_MEAN_SPEED_MULTIPLIER_SECOND * self.weight)
 
 
@@ -150,7 +151,7 @@ if __name__ == '__main__':
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
-        ('GGR', [88, 2, 0]),  #  тест-ошибка
+        ('GGR', [88, 2, 0]),  # тест-ошибка
     ]
 
     for workout_type, data in packages:
